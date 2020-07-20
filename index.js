@@ -7,7 +7,7 @@ require('./models/user')
 require('./models/product')
 require('./services/passport')
 
-mongoose.connect(keys.dbURLLocal)
+mongoose.connect(keys.dbURL)
 
 const app = express();
 /* app.use is to set middleware. we have put 3 middleware below. 
