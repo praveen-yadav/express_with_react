@@ -10,6 +10,10 @@ require('./services/passport')
 mongoose.connect(keys.dbURLLocal)
 
 const app = express();
+/* app.use is to set middleware. we have put 3 middleware below. 
+    Middleware are small function which modify the request, before it is being given to route handler.
+    All 3 middleware are connected serially. request object is passsed from one function to another
+*/
 app.use(
     cookieSession({
         maxAge: 30*24*60*60*1000, //30 days
@@ -20,19 +24,12 @@ app.use(
 /* Below 2 lines tell, telling passport to use cookies for authentication 
 Browser request comes in -> cookieSession extracts the cookie data by decrypting, and pass to the passport object. 
 passport object call the deserializeUser to retreive the actual user instance in DB. 
+User model instance added to req object as 'req.user'   
 */
 app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 
-/*
-    Google Oauth:https://console.cloud.google.com/home/dashboard?project=cool-discipline-280617
-    Heroku app hosted here: https://powerful-caverns-04805.herokuapp.com/
-    MongDb cluster here: https://cloud.mongodb.com/v2/5f095dbcb77bc27db34f8d2a#clusters/detail/GoogleCloudCluster2020July 
-    Local mongod: open terminal->type mongod->copy the port 127.0.0.1:27017
-
-*/
-
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000 //process.env.PORT will be set automatically by Heroku server
 app.listen(PORT);

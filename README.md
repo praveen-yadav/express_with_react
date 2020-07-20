@@ -6,3 +6,29 @@ Technologies used:
 2. Connecting to Atlas hosted MongoDB collections as well as local collection
 3. NodeJS+Express with cookie-session to track the user
 4. React and Redux in front-end to maintain user session and for GUI
+
+Few Shortcut links:
+Google Oauth:https://console.cloud.google.com/home/dashboard?project=cool-discipline-280617
+MongDb cluster here: https://cloud.mongodb.com/v2/5f095dbcb77bc27db34f8d2a#clusters/detail/GoogleCloudCluster2020July 
+Local mongod: open terminal->type mongod->copy the port 127.0.0.1:27017
+Heroku app hosted here: https://powerful-caverns-04805.herokuapp.com/
+
+Git commands:
+git pull origin master
+git add .
+git status
+git commit -m "<msg>"
+git push origin master
+git remote -V
+
+Heroku commands:
+open git bash and type
+    cli>heroku login
+    It will open web-browser and logged-in.
+
+    cli>heroku open 
+    will open the project in browser
+
+Deploy the code to Production server:
+    cli>cd "C:\Users\PRAVYADA\OneDrive - Qualcomm\Desktop\ReactPractice\express_with_react"
+    cli>git push heroku master
