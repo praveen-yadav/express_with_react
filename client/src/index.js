@@ -1,3 +1,7 @@
+/* Webpack automatically knows this is in node_modules folder. installed this external CSS file.  we dont need to import to a variable 
+    Webpack can work with css extension also
+*/
+import 'materialize-css/dist/css/materialize.min.css'
 /* In server code, we use NodeJS which doesnt have ES15 support, hence we use "require" statement at top
     But in Client code, we have "import" which comes with Babel ES15 support
 */
