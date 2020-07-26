@@ -33,3 +33,9 @@ open git bash and type
 Deploy the code to Production server:
     cli>cd "C:\Users\PRAVYADA\OneDrive - Qualcomm\Desktop\ReactPractice\express_with_react"
     cli>git push heroku master
+
+Date:20thJuly'20
+Changes: 
+1. Install react app called client using "npx create-react-app client"
+2. Because react will run its own server, so we need to start two server every time we make a fix. Hence modified the script to to use 
+    npm module concurrenly which will start both server

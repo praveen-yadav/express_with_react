@@ -35,19 +35,17 @@ passport.use(
         callbackURL: '/auth/google/callback',
         proxy: true
       },
-      (accessToken, refreshToken, profile, done) => {
+      async (accessToken, refreshToken, profile, done) => {
         
         // new product({name:"Wallet", value:1}).save();
-        User.findOne({googleId: profile.id }).then(exisitinguser=>{
-            if(exisitinguser){
-              done(null, exisitinguser);
-            }else{
-              // Save the new model instance, passing a callback
-              new User({ googleId: profile.id, name:profile.displayName, email:profile.emails[0].value }).save()
-              .then(user=>done(null,user));
-            }
-        })
-
+        const existinguser = await User.findOne({googleId: profile.id })
+      
+        if(exisitinguser){
+          return done(null, exisitinguser);
+        }
+        // Save the new model instance, passing a callback
+        const user = await new User({ googleId: profile.id, name:profile.displayName, email:profile.emails[0].value }).save()
+        return done(null,user);
       }
     )
   );
