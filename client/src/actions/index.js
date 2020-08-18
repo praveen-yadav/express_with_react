@@ -1,3 +1,9 @@
+import axios from 'axios'
+/*AXIOS library is for AJAX request to server. 
+Check file server/routes/authRoutes.js which is connected via middleware setupProxy.js .
+Any call to /api is transferred to backend server which will return user object if already logged in .
+*/
+
 /*
 React Component
     calls a 
@@ -10,19 +16,30 @@ Reducers
 Store
     State sent back to components , causing them to re-render
 */
-import axios from 'axios'
+
 import {FETCH_USER} from './types'
 
-export const fetch_user = () =>{
-    return function(dispatch){
-        axios
-        .get('/api/current_user')
-        .then(res=>dispatch({type: FETCH_USER , payload:res}))
+/*fetch_user is a function that returns a function which takes dispatch as arg. It then request NodeServer with AJAX. when result come back, it dispatches action to redux*/
+export const fetch_user = () => async dispatch => {
+        const res = await axios.get('/api/current_user');
+        dispatch({type: FETCH_USER , payload:res});
+    };
+/*
+console.log(res) => 
+    type: "fetch_user", 
+    payload: {
+        config: {url: "/api/current_user", method: "get", headers: {…}, transformRequest: Array(1), transformResponse: Array(1), …}
+        data:
+            passport: {user: "5f1585a26afab9434c0cf631"}
+            __proto__: Object
+        headers: {connection: "close", content-length: "48", content-type: "application/json; charset=utf-8", date: "Tue, 18 Aug 2020 17:29:17 GMT", etag: "W/"30-eTGRB/raxhdy5ExJXJnYcrpR4sw"", …}
+        request: XMLHttpRequest {readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, onreadystatechange: ƒ, …}
+        status: 200
+        statusText: "OK"
+        __proto__: Object
+        type: "fetch_user"
+        __proto__: Object
     }
-    
-    /*AXIOS library is for AJAX request to server. 
-    Check file server/routes/authRoutes.js which is connected via middleware setupProxy.js .
-    Any call to /api is transferred to backend server which will return user object if already logged in .
-    */
-};
+*/
+
 
