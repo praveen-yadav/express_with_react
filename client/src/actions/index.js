@@ -22,7 +22,7 @@ import {FETCH_USER} from './types'
 /*fetch_user is a function that returns a function which takes dispatch as arg. It then request NodeServer with AJAX. when result come back, it dispatches action to redux*/
 export const fetch_user = () => async dispatch => {
         const res = await axios.get('/api/current_user');
-        dispatch({type: FETCH_USER , payload:res});
+        dispatch({type: FETCH_USER , payload:res.data});
     };
 /*
 console.log(res) => 

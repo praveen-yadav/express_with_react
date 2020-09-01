@@ -4,7 +4,7 @@ import { connect } from 'react-redux'; /* Redux can exist without react. Hence w
 import * as actions from '../actions'; /*import all different action creaters */
 
 import Header from './Header'
-
+import Landing from './Landing'
 
 /*
 index.js is data driven layer
@@ -18,7 +18,6 @@ Header, Lading, Dashboard(->SurveyList->SurveyListItem), SurveyNew(->SurveyField
 
 const DashBoard = () =><h2>DashBoard</h2>;
 const SurveyNew = () =><h2>SurveyNew</h2>;
-const Landing = () =><h2>Landing</h2>;
 
 class App extends Component{
     /*We are using DidMount instead of WillMount because DidMount is called every time, global state of app is changed. It is called after component
