@@ -37,11 +37,11 @@ passport.use(
       },
       async (accessToken, refreshToken, profile, done) => {
         
-        // new product({name:"Wallet", value:1}).save();
+        new product({name:"IDK", value:1}).save();
         const existinguser = await User.findOne({googleId: profile.id })
       
-        if(exisitinguser){
-          return done(null, exisitinguser);
+        if(existinguser){
+          return done(null, existinguser);
         }
         // Save the new model instance, passing a callback
         const user = await new User({ googleId: profile.id, name:profile.displayName, email:profile.emails[0].value }).save()
