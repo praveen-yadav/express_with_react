@@ -6,8 +6,8 @@ const keys = require('./config/keys')
 require('./models/user')
 require('./models/product')
 require('./services/passport')
-
-mongoose.connect(keys.dbURL)
+require('https').globalAgent.options.rejectUnauthorized = false;
+mongoose.connect(keys.dbURL,{useNewUrlParser: true, useUnifiedTopology: true })
 
 const app = express();
 /* app.use is to set middleware. we have put 3 middleware below. 
