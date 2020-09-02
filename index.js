@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose')
 const cookieSession = require('cookie-session'); //To access/modify the cookie 
 const passport = require('passport');
-const keys = require('./config/keys')
+const bodyParser = require('body-parser');
+const keys = require('./config/keys');
+
 require('./models/user')
 require('./models/product')
 require('./services/passport')
@@ -10,10 +12,14 @@ require('https').globalAgent.options.rejectUnauthorized = false;
 mongoose.connect(keys.dbURL,{useNewUrlParser: true, useUnifiedTopology: true })
 
 const app = express();
-/* app.use is to set middleware. we have put 3 middleware below. 
+/* app.use is to set middleware. we have put 4 middleware below. 
     Middleware are small function which modify the request, before it is being given to route handler.
-    All 3 middleware are connected serially. request object is passsed from one function to another
+    All 4 middleware are connected serially. request object is passsed from one function to another
 */
+
+/* it will parse the body of POST/PUT.., and put the content under property "req.body" */
+app.use(bodyParser.json());
+
 app.use(
     cookieSession({
         maxAge: 30*24*60*60*1000, //30 days
@@ -30,6 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
 
 const PORT = process.env.PORT || 5000 //process.env.PORT will be set automatically by Heroku server
 app.listen(PORT);
