@@ -27,3 +27,5 @@ ReactDOM.render(
         cause all children component to be rerendered    */
     document.querySelector('#root')
 );
+
+console.log('STRIPE KEY'+process.env.REACT_APP_STRIPE_KEY)

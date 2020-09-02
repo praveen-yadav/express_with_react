@@ -42,4 +42,12 @@ console.log(res) =>
     }
 */
 
+/* Send the token from front end to backend. Backend process the payment, and send back user model with updated new credits field . 
+    Then we update the user model in the redux store, update the frontend "CUrrent credits" button
+*/
+export const handleToken = (token) => async (dispatch)=>{
+    const res = await axios.post('/api/stripe', token);
+    dispatch({type: FETCH_USER, payload:res.data});
+};
+
 
