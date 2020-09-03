@@ -17,7 +17,7 @@ const app = express();
     All 4 middleware are connected serially. request object is passsed from one function to another
 */
 
-/* it will parse the body of POST/PUT.., and put the content under property "req.body" */
+/* it will parse the body of GET/POST/PUT.., and put the content under property "req.body" */
 app.use(bodyParser.json());
 
 app.use(
@@ -34,6 +34,7 @@ User model instance added to req object as 'req.user'
 */
 app.use(passport.initialize());
 app.use(passport.session());
+/*5th middleware is requireLogin which will be called only on selected APIs, for example in billingRoutes */
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
