@@ -18,7 +18,8 @@ class Header extends Component{
              default:
                 return [
                     <li key='1'><Payments /></li>,
-                    <li key='2'><a href="/api/logout">Logout</a></li> /* Li is taking unique id, else it throws warning each JSX element should be unique */
+                    <li key='2' style={{margin: '0 10px '}}>Credits : {this.props.auth.credits}</li>,
+                    <li key='3'><a href="/api/logout">Logout</a></li> /* Li is taking unique id, else it throws warning each JSX element should be unique */
                 ];
         }
     }
