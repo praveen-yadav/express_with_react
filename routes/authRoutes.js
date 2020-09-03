@@ -1,10 +1,6 @@
 const passport = require('passport')
 
 module.exports = app => {
-    app.get('/',(request, response)=>{
-        response.send({hi : 'there'});
-    })    
-
     app.get(
         '/auth/google',
         passport.authenticate('google', {
