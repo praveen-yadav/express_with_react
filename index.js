@@ -5,8 +5,9 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 
-require('./models/user')
-require('./models/product')
+require('./models/user');
+require('./models/product');
+require('./models/Survey');
 require('./services/passport')
 require('https').globalAgent.options.rejectUnauthorized = false;
 mongoose.connect(keys.dbURL,{useNewUrlParser: true, useUnifiedTopology: true })
@@ -41,6 +42,15 @@ require('./routes/billingRoutes')(app);
 
 if(process.env.NODE_ENV === "production")
 {
+    /*
+    Inside client directory , if we run the command "npm run build", which is a script provided by create-react-app, it generates /client/build,
+     inside this we have static/js/, static/css, index.html.
+    In the production build, express server has to handle all the routes, so it first send index.html if no routes are matching.
+    Then browser again ask for embeded .js and .css. Express send JS and CSS now.
+    Now browser has got the React component, so it know how to handle the react routes. It will serve the browser, any component it requires.
+    */
+
+
     //Express will serve up production assests
     //like our main.js file, or main.css file
     app.use(express.static('client/build'));
