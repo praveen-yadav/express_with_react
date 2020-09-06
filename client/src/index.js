@@ -12,7 +12,7 @@ import App from './components/App'
 import {createStore, applyMiddleware} from 'redux'
 import reduxThunk from 'redux-thunk'
 import reducers from './reducers'
-
+import axios from 'axios';
 const store = createStore(
     reducers, 
     {},
@@ -28,4 +28,5 @@ ReactDOM.render(
     document.querySelector('#root')
 );
 
-console.log('STRIPE KEY'+process.env.REACT_APP_STRIPE_KEY)
+
+window.axios = axios;

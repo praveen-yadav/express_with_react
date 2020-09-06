@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'mongoose';
+//import { connect } from 'mongoose';
 
 const Landing = () =>{
     return (
