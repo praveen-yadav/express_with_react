@@ -43,18 +43,19 @@ class SurveyForm extends Component{
 function validateFunction(values)
 {
     /* values object is a structure with key=field name and value and we need to return an object */
+    
     /*if redux form get the error object as empty, that means no probelm were found*/
     const errors={}
-    if(!values.title){
-        errors.title = "You must provide a title";
-    }
-    if(!values.subject){
-        errors.subject = "you must provide a subject";
-    }
-    if(!values.body){
-        errors.body = "you must provide a body";
-    }    
-    
+
+    // if(!values.title){
+    //     errors.title = "You must provide a title";
+    // }
+    _.map(FIELDS, ({name})=>{
+        if(!values[name]){
+            errors[name]="You must provide a "+name;
+        } 
+    })
+        
     return errors;
     
 }
