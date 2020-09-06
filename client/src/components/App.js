@@ -3,9 +3,10 @@ import {BrowserRouter , Route} from 'react-router-dom';
 import { connect } from 'react-redux'; /* Redux can exist without react. Hence we need this library to get more functionality */
 import * as actions from '../actions'; /*import all different action creaters */
 
-import Header from './Header'
-import Landing from './Landing'
-
+import Header from './Header';
+import Landing from './Landing';
+import DashBoard from './DashBoard';
+import SurveyNew from './surveys/SurveyNew'
 /*
 index.js is data driven layer
 app.js is rendering related layer
@@ -15,9 +16,6 @@ Header, Lading, Dashboard(->SurveyList->SurveyListItem), SurveyNew(->SurveyField
 */
 
 /*Demo Components*/
-
-const DashBoard = () =><h2>DashBoard</h2>;
-const SurveyNew = () =><h2>SurveyNew</h2>;
 
 class App extends Component{
     /*We are using DidMount instead of WillMount because DidMount is called every time, global state of app is changed. It is called after component
