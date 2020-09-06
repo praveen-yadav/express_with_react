@@ -40,6 +40,25 @@ class SurveyForm extends Component{
 
 } 
 
+function validateFunction(values)
+{
+    /* values object is a structure with key=field name and value and we need to return an object */
+    /*if redux form get the error object as empty, that means no probelm were found*/
+    const errors={}
+    if(!values.title){
+        errors.title = "You must provide a title";
+    }
+    if(!values.subject){
+        errors.subject = "you must provide a subject";
+    }
+    if(!values.body){
+        errors.body = "you must provide a body";
+    }    
+    
+    return errors;
+    
+}
 export default reduxForm({
+    validate:validateFunction,
     form:'surveyForm'
 })(SurveyForm); //reduxForm is adding some additional props to pass to SurveyForm, one of that props is handleSubmit which is called above on form submission
