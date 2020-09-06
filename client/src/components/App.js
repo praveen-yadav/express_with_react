@@ -26,7 +26,7 @@ class App extends Component{
 
     render(){
         return (
-        <div>
+        <div className="container">
             <BrowserRouter> 
                 <Header />
                 <Route path="/" exact={true} component={Landing}></Route> 
