@@ -5,17 +5,12 @@ import { reduxForm, Field } from 'redux-form';
 import SurveyField from './SurveyField';
 import {Link } from 'react-router-dom';
 import validateEmails from  './../../utils/validateEmails';
+import  formFields from './formFields';
 
-const FIELDS = [
-    {label: "Survey Title", name:"title" },
-    {label: "Subject Line", name: "subject"},
-    {label: "Email body", name: "body"},
-    {label: "Recipient List", name: "recipientList"},
-]
 class SurveyForm extends Component{
 
     renderFields(){
-        return _.map(FIELDS, ({label, name})=>{
+        return _.map(formFields, ({label, name})=>{
             return <Field component={SurveyField} type="text" labelToShow={label} name={name} key={name} />
         });
     }
@@ -51,7 +46,7 @@ function validateFunction(values)
     // if(!values.title){
     //     errors.title = "You must provide a title";
     // }
-    _.map(FIELDS, ({name})=>{
+    _.map(formFields, ({name})=>{
         if(!values[name]){
             errors[name]="You must provide a "+name;
         } 
@@ -63,7 +58,7 @@ function validateFunction(values)
 }
 export default reduxForm({
     validate:validateFunction,
-    form:'surveyForm',
+    form:'surveyForm', /* Check surveyFormReview file to see how we utilize "form" object which is added to redux state. */
     destroyOnUnmount:false
 })(SurveyForm); //reduxForm is adding some additional props to pass to SurveyForm, one of that props is handleSubmit which is called above on form submission
 
