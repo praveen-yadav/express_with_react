@@ -51,3 +51,6 @@ export const handleToken = (token) => async (dispatch)=>{
 };
 
 
+export const submitSurvey = (values) =>{
+    dispatch({type:SUBMIT_SURVEY , payload=values});
+}
