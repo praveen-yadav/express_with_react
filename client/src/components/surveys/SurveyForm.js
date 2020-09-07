@@ -52,7 +52,7 @@ function validateFunction(values)
         } 
     })
         
-    errors.recipientList = validateEmails(values.recipientList || '');
+    errors.recipients = validateEmails(values.recipients || '');
     return errors;
     
 }
