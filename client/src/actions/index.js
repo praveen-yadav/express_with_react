@@ -51,9 +51,11 @@ export const handleToken = (token) => async (dispatch)=>{
 };
 
 
-export const submitSurvey = (values) =>async(dispatch)=>{
+export const submitSurvey = (values, history) =>async(dispatch)=>{
     const res = await axios.post('/api/surveys', values);
 
+    history.push('/surveys');
+    
     /*note above api return updated user object, so we update all the components with below. for ex: updated credits*/
     dispatch({type:FETCH_USER , payload:res.data});
 };
