@@ -1,5 +1,4 @@
-const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+const re = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 export default (emails) => {
     const invalidEmails = emails
         .split(',')
@@ -8,8 +7,6 @@ export default (emails) => {
         );
         //Try to capture invalid emails, hence filter funciton returns true if you want the item to be included in array
     
-    console.log(emails);
-    console.log(invalidEmails);
     if(invalidEmails.length){
         return `These emails are invalid: ${invalidEmails}`;
     }

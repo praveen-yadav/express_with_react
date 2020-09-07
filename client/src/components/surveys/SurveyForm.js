@@ -24,7 +24,7 @@ class SurveyForm extends Component{
         return (
             <div>
                 SurveyForm!
-                <form onSubmit={this.props.handleSubmit(values => console.log(values))}> 
+                <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit) /*passing the callback prop to reduxForm */}> 
                     {this.renderFields()}                    
                     <Link to="/surveys" className="red btn-flat left white-text">
                         Cancel
@@ -63,5 +63,10 @@ function validateFunction(values)
 }
 export default reduxForm({
     validate:validateFunction,
-    form:'surveyForm'
+    form:'surveyForm',
+    destroyOnUnmount:false
 })(SurveyForm); //reduxForm is adding some additional props to pass to SurveyForm, one of that props is handleSubmit which is called above on form submission
+
+/*destroyOnUnmount means that when the form component is not active, retain the values of form still in state
+When next time form componnet loads, it will be filled with same values as last time
+*/
