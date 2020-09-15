@@ -1,5 +1,7 @@
 # express_with_react (MERN stack)
 
+Deployed on Heroku here: https://powerful-caverns-04805.herokuapp.com
+
 Getting my hands dirty with ES6 based fullstack project.
 Technologies used:
 1. Oauth with passport(only Google strategy for now)
