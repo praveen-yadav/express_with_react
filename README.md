@@ -1,4 +1,4 @@
-# express_with_react
+# express_with_react (MERN stack)
 
 Getting my hands dirty with ES6 based fullstack project.
 Technologies used:
@@ -6,6 +6,8 @@ Technologies used:
 2. Connecting to Atlas hosted MongoDB collections as well as local collection
 3. NodeJS+Express with cookie-session to track the user
 4. React and Redux in front-end to maintain user session and for GUI
+5. Stripe for Payment Processing
+6. SendGrid for Email Processing
 
 Few Shortcut links:
 Google Oauth:https://console.cloud.google.com/home/dashboard?project=cool-discipline-280617
@@ -39,3 +41,7 @@ Changes:
 1. Install react app called client using "npx create-react-app client"
 2. Because react will run its own server, so we need to start two server every time we make a fix. Hence modified the script to to use 
     npm module concurrenly which will start both server
+
+Details About Project:
+I will build this using the MERN stack but also adding some nice features I have done in the past.
+
